@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 
-import "../../src/styles/Layout.css"
+import "../../styles/Layout.css"
 
 export default function LoginBase({children = <Outlet></Outlet>}) {
     return (

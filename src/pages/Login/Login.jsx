@@ -17,6 +17,7 @@ function Login() {
       return;
     }
 
+  navigate("/main");
     // 로그인 처리 로직
     console.log("Logging in with", { email, password, rememberMe });
 
