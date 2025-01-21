@@ -8,11 +8,42 @@ html, body {
   
   .container {
     display: flex;
+    align-items: center;
     width: 100%;
     height: 100%;
     max-width: 62.5rem; /* 최대 너비 제한 (1000px -> 62.5rem) */
     margin: 0 auto; /* 가운데 정렬 */
   }
+
+  .socialLoginContainer {
+    padding: 0.625rem 1.25rem; 
+    margin-top: 20px;
+  }
+  
+  .socialLoginButton {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .kakao {
+    background-color: #fee500;
+    color: #000;
+  }
+  
+  .google {
+    background-color: #4285f4;
+    color: #fff;
+  }
+  
+  .naver {
+    background-color: #03c75a;
+    color: #fff;
+  }
+  
   
   .content-left{
     width: 50%;
@@ -81,7 +112,6 @@ html, body {
     border-bottom: 0.12rem solid #f8f8f8;
 }
 
-  
   .checkboxContainer {
     display: flex;
     align-items: center;

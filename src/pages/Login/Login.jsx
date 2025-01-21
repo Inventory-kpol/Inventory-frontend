@@ -30,6 +30,16 @@ function Login() {
     navigate("/SignUp"); // 'signUp' 경로로 이동
   };
 
+  const handleSocialLogin = (provider) => {
+    const socialLoginUrls = {
+      kakao: `${process.env.REACT_APP_API}/api/member/login/kakao`,
+      google: `${process.env.REACT_APP_API}/api/member/login/google`,
+      naver: `${process.env.REACT_APP_API}/api/member/login/naver`,
+    };
+
+    window.location.href = socialLoginUrls[provider];
+  };
+
   return (
     <div className="container">
       <ToastContainer />
@@ -37,19 +47,19 @@ function Login() {
         <div>
           <p>
             Inventory의 <br />
-            회원이 아직인가요? 
+            회원이 아직인가요?
           </p>
         </div>
         <div>
           <button
             className="signUpButton"
-            onClick={goToSignUp} // 회원가입 버튼 클릭 시 페이지 이동
+            onClick={goToSignUp}
           >
             회원가입
           </button>
         </div>
       </div>
-      <div className="vertical-line"> </div>
+      <div className="vertical-line"></div>
       <div className="content-right">
         <div className="inputGroup">
           <label>
@@ -84,6 +94,28 @@ function Login() {
         <button className="loginButton" onClick={handleLogin}>
           로그인
         </button>
+
+        <div className="socialLoginContainer">
+          <p>소셜 로그인</p>
+          <button
+            className="socialLoginButton kakao"
+            onClick={() => handleSocialLogin("kakao")}
+          >
+            카카오로 로그인
+          </button>
+          <button
+            className="socialLoginButton google"
+            onClick={() => handleSocialLogin("google")}
+          >
+            구글로 로그인
+          </button>
+          <button
+            className="socialLoginButton naver"
+            onClick={() => handleSocialLogin("naver")}
+          >
+            네이버로 로그인
+          </button>
+        </div>
       </div>
     </div>
   );
