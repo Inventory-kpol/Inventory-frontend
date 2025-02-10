@@ -104,19 +104,19 @@ function Login() {
             className="socialLoginButton google"
             onClick={() => handleSocialLogin("google")}
           >
-          <img src={googleLogo} alt="구글 로그인" className="socialLogo" /> 
+          <img src={googleLogo} alt="구글" className="socialLogo" /> 
           </button>
           <button
             className="socialLoginButton naver"
             onClick={() => handleSocialLogin("naver")}
           >
-          <img src={naverLogo} alt="네이버 로그인" className="socialLogo" /> 
+          <img src={naverLogo} alt="네이버" className="socialLogo" /> 
           </button>
           <button
             className="socialLoginButton kakao"
             onClick={() => handleSocialLogin("kakao")}
           >
-          <img src={kakaoLogo} alt="카카오 로그인" className="socialLogo" /> 
+          <img src={kakaoLogo} alt="카카오" className="socialLogo" /> 
           </button>
         </div>
       </div>
