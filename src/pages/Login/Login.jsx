@@ -4,6 +4,10 @@ import "../../styles/Login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import googleLogo from "../../assets/google.png"
+import kakaoLogo from "../../assets/kakao.png"
+import naverLogo from "../../assets/naver.png"
+
 function Login() {
   const [email, setEmail] = useState(""); // 상태 초기화
   const [password, setPassword] = useState(""); 
@@ -96,24 +100,23 @@ function Login() {
         </button>
 
         <div className="socialLoginContainer">
-          <p>소셜 로그인</p>
-          <button
-            className="socialLoginButton kakao"
-            onClick={() => handleSocialLogin("kakao")}
-          >
-            카카오로 로그인
-          </button>
           <button
             className="socialLoginButton google"
             onClick={() => handleSocialLogin("google")}
           >
-            구글로 로그인
+          <img src={googleLogo} alt="구글" className="socialLogo" /> 
           </button>
           <button
             className="socialLoginButton naver"
             onClick={() => handleSocialLogin("naver")}
           >
-            네이버로 로그인
+          <img src={naverLogo} alt="네이버" className="socialLogo" /> 
+          </button>
+          <button
+            className="socialLoginButton kakao"
+            onClick={() => handleSocialLogin("kakao")}
+          >
+          <img src={kakaoLogo} alt="카카오" className="socialLogo" /> 
           </button>
         </div>
       </div>
