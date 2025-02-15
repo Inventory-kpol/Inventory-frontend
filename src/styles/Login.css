@@ -1,0 +1,154 @@
+/* styles/login.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-size: 16px; /* 기본 font-size 설정 (1rem = 16px) */
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 62.5rem; /* 최대 너비 제한 (1000px -> 62.5rem) */
+    margin: 0 auto; /* 가운데 정렬 */
+  }
+
+  .socialLoginContainer {
+    padding: 0.625rem 10.625rem; 
+  }
+  
+  .socialLoginButton {
+    padding: 0.825rem 0.25rem;
+    border: none;
+    border-radius: 50px;
+    width: 50;
+    background-color: #000000;
+  }
+
+  .socialLoginButton img{
+    width: 50px;
+    height: 50px;
+  }
+  
+  .content-left{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start; /* 왼쪽 정렬 */
+    padding-left: 3rem;
+  }
+  .content-right {
+    margin-top: 30px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    padding-left: 3rem;
+    align-items: center; /* 요소들을 가운데 정렬 */
+    gap: 1.8rem;
+  }
+  
+  .content-left p {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.625rem;
+    line-height: 4.375rem; 
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    margin-bottom: 130px;
+  }
+
+  .vertical-line {
+    width: 0.15rem; /* 1px -> 0.0625rem */
+    background-color: #3e16d1;
+    height: 80%; /* 세로줄의 높이 */
+    align-self: center;
+  }
+  
+  .inputGroup {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    width: 90%;
+    padding: 0 1.25rem; /* 양쪽 여백 20px -> 1.25rem */
+  }
+  
+  .inputGroup label{
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #525252;
+  }
+  
+  .input {
+    border: none;
+    border-bottom: 0.12rem solid #A9A9C6; /* 밑줄 두께 확대 */
+    padding: 12px 6px; /* 내부 여백 확대 */
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    background-color: black; /* 배경색을 검정색으로 설정 */
+    color: white; /* 텍스트 색을 흰색으로 설정 (검정 배경에 잘 보이도록) */
+}
+
+.input:focus {
+    outline: none;
+    border-bottom: 0.12rem solid #f8f8f8;
+}
+
+  .checkboxContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px; 
+    width: 90%;
+    padding: 0 1.25rem; 
+  }
+  
+  .checkboxContainer label{
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #525252;
+    margin-left: 0.5rem;
+  }
+  
+  .signUpButton {
+    padding: 0.625rem 1.25rem; 
+    border: 0.15rem solid #3e16d1; 
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background-color: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    width: 21rem;
+  }
+  
+  .loginButton {
+    padding: 0.625rem 1.25rem; 
+    border-radius: 0.5rem;
+    background-color: #3801ff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    cursor: pointer;
+    border: 0.15rem solid #3801ff;
+    width: 80%;  
+    margin-left: 30px;
+  } 
+  
+  .loginButton:hover{
+    border-color: #3A3A7D;
+  }
+  
+  .signupButton:hover{
+    border-color: #3A3A7D;
+  }

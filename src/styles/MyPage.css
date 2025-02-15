@@ -1,0 +1,27 @@
+.container {
+  display : flex; 
+  gap : 20px;
+  padding: 20px;
+  border: 1px solid #000000
+
+}
+
+
+.left-container{
+  flex: 3;
+  border: 1px solid #000000;
+
+}
+
+.right-container{
+  flex: 1;
+  border: 1px solid #000000;
+
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* 세로 정렬로 변경 */
+    gap: 10px;
+  }
+}
