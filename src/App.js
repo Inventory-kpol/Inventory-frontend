@@ -25,7 +25,7 @@ export default function App() {
         <Route path="/authgoogle" element={<GoogleRedirect />} />
         <Route path="/authnaver" element={<NaverRedirect />} />
       </Route>
-
+      
       {/* 메인 페이지 및 게시글 관련 경로 */}
       <Route path="/main" element={<MainPage />} />
       <Route path="/post-write" element={<PostWritePage />} />
