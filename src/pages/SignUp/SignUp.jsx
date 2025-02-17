@@ -16,21 +16,32 @@ function SignUp() {
 
   const handleNextStep = () => {
     // 첫 번째 페이지 유효성 검사
-    if (!username.trim() || !password.trim() || !confirmPassword.trim()) {
+    if (!email.trim() || !password.trim() || !confirmPassword.trim()) {
       toast.error("모두 입력해주세요.");
       return;
     }
+
     if (password !== confirmPassword) {
       toast.error("비밀번호가 일치하지 않습니다.");
       return;
     }
+
     const numericOnlyRegex = /^[0-9]+$/;
     if (numericOnlyRegex.test(username)) {
       toast.error("아이디는 숫자로만 이루어질 수 없습니다.");
       return;
     }
+
+    // 이메일 유효성 검사 추가
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      toast.error("올바른 이메일 주소를 입력해주세요.");
+      return;
+    }
+
     setStep(2); // 유효성 검사 통과 후, 두 번째 단계로 넘어감
-  };
+};
+
 
   const handleSignUp = async () => {
     // 모든 입력 데이터 유효성 검사
