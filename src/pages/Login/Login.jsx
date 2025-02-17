@@ -35,15 +35,9 @@ function Login() {
   };
 
   const handleSocialLogin = (provider) => {
-    const socialLoginUrls = {
-      kakao: `${process.env.REACT_APP_API}/api/member/login/kakao`,
-      google: `${process.env.REACT_APP_API}/api/member/login/google`,
-      naver: `${process.env.REACT_APP_API}/api/member/login/naver`,
-    };
-
-    window.location.href = socialLoginUrls[provider];
+    window.location.href = `${process.env.REACT_APP_API}/api/member/login/${provider}`;
   };
-
+  
   return (
     <div className="container">
       <ToastContainer />
