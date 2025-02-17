@@ -7,7 +7,7 @@ function Column(){
     
     return (
         <div>
-            
+            무슨 내용을 넣어야할지 공부해올게요 ㅠㅠ
         </div>
     );
     
