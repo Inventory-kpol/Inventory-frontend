@@ -4,7 +4,7 @@ import "../../styles/Layout.css"
 
 export default function LoginBase({children = <Outlet></Outlet>}) {
     return (
-      <div className="background-image">
+      <div>
         <div className="login-container">
           {children}
         </div>
