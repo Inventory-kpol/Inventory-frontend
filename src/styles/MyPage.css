@@ -1,27 +1,43 @@
 .container {
-  display : flex; 
-  gap : 20px;
-  padding: 20px;
-  border: 1px solid #000000
-
+  display: flex;
 }
 
-
-.left-container{
+.left-container {
   flex: 3;
-  border: 1px solid #000000;
-
+  padding: 20px;
 }
 
-.right-container{
+.right-container {
   flex: 1;
-  border: 1px solid #000000;
-
+  padding: 20px;
 }
 
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* 세로 정렬로 변경 */
-    gap: 10px;
-  }
+.profile-section {
+  text-align: center;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.stats-section button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+}
+
+.stats-section button:hover {
+  background-color: #e0e0e0;
+}
+
+.post-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
 }
