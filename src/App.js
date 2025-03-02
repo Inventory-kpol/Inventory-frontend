@@ -1,8 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import GoogleRedirect from "./pages/Redirect/GoogleRedirect";
-import KakaoRedirect from "./pages/Redirect/KakaoRedirect";
-import NaverRedirect from "./pages/Redirect/NaverRedirect";
+import SocialRedirect from "./pages/Redirect/SocialRedirect";
 
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
@@ -21,9 +19,7 @@ export default function App() {
       <Route element={<LoginBase />}>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/authkakao" element={<KakaoRedirect />} />
-        <Route path="/authgoogle" element={<GoogleRedirect />} />
-        <Route path="/authnaver" element={<NaverRedirect />} />
+        <Route path="/login/:provider" element={<SocialRedirect />} />
       </Route>
       
       {/* 메인 페이지 및 게시글 관련 경로 */}
