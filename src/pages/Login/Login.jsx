@@ -100,12 +100,14 @@ function Login() {
           >
           <img src={googleLogo} alt="구글" className="socialLogo" /> 
           </button>
+          
           <button
             className="socialLoginButton naver"
             onClick={() => handleSocialLogin("naver")}
           >
           <img src={naverLogo} alt="네이버" className="socialLogo" /> 
           </button>
+
           <button
             className="socialLoginButton kakao"
             onClick={() => handleSocialLogin("kakao")}

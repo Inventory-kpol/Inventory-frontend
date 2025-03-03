@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+/* 써진 글 확인하는 페이지 */
 function Column(){
 
     const navigate = useNavigate();

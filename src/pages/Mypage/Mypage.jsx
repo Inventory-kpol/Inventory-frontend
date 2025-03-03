@@ -3,87 +3,111 @@ import axios from "axios";
 import Header from "../../components/Mypage_header";
 import "../../styles/MyPage.css";
 import { useNavigate } from "react-router-dom"; // useNavigate import
-const MyPage = () => {
-  const [posts, setPosts] = useState([]); // 왼쪽 컨테이너에 표시할 데이터
-  const [viewMode, setViewMode] = useState("profile"); // 현재 보기 모드 (profile, written, liked, commented)
-  const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate
-  // 더미 데이터
 
+
+
+const MyPage = () => {
+  const [viewMode, setViewMode] = useState("written"); // 현재 보기 모드, 3개의 보기모드가 있다. 
+  const [posts, setPosts] = useState([]); // 탭별 데이터
+
+  // 더미 데이터 (댓글 단 포스트)
+  const dummyPosts = [
+    {
+      id: 1,
+      userId: 1,
+      nickname: "짱구야",
+      title: "Velog 글 작성법",
+      content: "Velog에서 글 작성하는 방법...",
+      createdAt: "2025-03-01T12:00:00Z",
+      likeCount: 136,
+      comments: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    },
+    {
+      id: 2,
+      userId: 2,
+      nickname: "철수",
+      title: "React 시작하기",
+      content: "React 프로젝트를 시작하는 방법...",
+      createdAt: "2025-02-28T10:30:00Z",
+      likeCount: 45,
+      comments: [{ id: 1 }],
+    },
+  ];
+  
   const dummyCommentedPosts = [
-    { id: 3, title: "댓글 단 글 1", content: "이것은 댓글을 단 게시글입니다." },
-    { id: 4, title: "댓글 단 글 2", content: "이것은 두 번째 댓글을 단 게시글입니다." },
+    {
+      id: 3,
+      userId: 1,
+      nickname: "짱구야",
+      title: "댓글 단 글 제목",
+      content:
+        "이것은 댓글을 단 게시글입니다. 댓글을 달아보니 재미있네요!",
+      createdAt: "2025-03-02T15:00:00Z",
+      likeCount: 20,
+      comments: [{ id: 1 }, { id: 2 }],
+    },
   ];
 
-  // 보기 모드에 따라 데이터 가져오기
+  // 보기 모드에 따라 데이터 필터링
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let response;
-        if (viewMode === "written") {
-          // 작성한 글 API 호출
-          response = await axios.get("/api/members/me/boards");
-        } else if (viewMode === "liked") {
-          // 좋아요 누른 글 API 호출
-          response = await axios.get("/api/members/me/liked-boards");
-        } else if (viewMode === "commented") {
-          // 댓글 단 글은 더미 데이터 사용
-          setPosts(dummyCommentedPosts);
-          return;
-        } else {
-          setPosts([]); // 프로필 모드일 때는 빈 화면
-          return;
-        }
-        setPosts(response.data); // API 응답 데이터를 상태에 저장
-      } catch (error) {
-        console.error(`Error fetching ${viewMode} data:`, error);
-      }
-    };
+    if (viewMode === "written") {
+      setPosts(dummyPosts.filter((post) => post.userId === 1)); // 작성한 포스트 필터링
+    } else if (viewMode === "liked") {
+      setPosts(dummyPosts); // 좋아한 포스트 예시로 전체 출력
+    } else if (viewMode === "commented") {
+      setPosts(dummyCommentedPosts); // 댓글 단 포스트
+    }
+  }, [viewMode]);
 
-    fetchData();
-  }, [viewMode]); // viewMode가 변경될 때마다 실행
 
   return (
+    
     <div>
       <Header />
-      <div className="container">
-        {/* 왼쪽 컨테이너 */}
-        <div className="left-container">
-          {viewMode === "profile" ? (
-            <p>프로필 정보를 선택하세요.</p>
-          ) : posts.length > 0 ? (
-            posts.map((post) => (
-              <div key={post.id} className="post-card">
-                <h3>{post.title}</h3>
-                <p>{post.content}</p>
-              </div>
-            ))
-          ) : (
-            <p>데이터가 없습니다.</p>
-          )}
-        </div>
-
-        {/* 오른쪽 컨테이너 */}
-        <div className="right-container">
-          <div className="profile-section">
-            <img
-              src="/default-profile.png"
-          
-              className="profile-image"
-            />
-            <p> </p>
-          {/* 프로필 수정 버튼 */}
-            <button onClick={() => navigate("/profile/edit")}>프로필 수정</button>
+      <div className="mypage-content">
+        <div className="Main-container">
+          {/* 탭 버튼 세개 */}
+          <div className="tab-buttons">
+            <button
+              className={viewMode === "written" ? "active" : ""}
+              onClick={() => setViewMode("written")}
+            >
+              작성한 포스트
+            </button>
+            <button
+              className={viewMode === "liked" ? "active" : ""}
+              onClick={() => setViewMode("liked")}
+            >
+              좋아한 포스트
+            </button>
+            <button
+              className={viewMode === "commented" ? "active" : ""}
+              onClick={() => setViewMode("commented")}
+            >
+              댓글 단 포스트
+            </button>
           </div>
-          <div className="stats-section">
-            {/* 버튼들 */}
-            <button onClick={() => setViewMode("written")}>작성한 글</button>
-            <button onClick={() => setViewMode("liked")}>좋아요 누른 글</button>
-            <button onClick={() => setViewMode("commented")}>댓글 단 글</button>
+  {/* 카드 리스트 */}
+  <div className="post-list">
+            {posts.length > 0 ? (
+              posts.map((post) => (
+                <div key={post.id} className="post-card">
+                  <h3>{post.title}</h3>
+                  <p>{post.content.substring(0, 50)}...</p> {/* 내용 일부만 표시 */}
+                  <div className="post-meta">
+                    <span>{new Date(post.createdAt).toLocaleDateString()}</span> {/* 작성일 */}
+                    <span>{post.comments.length}개의 댓글</span> {/* 댓글 수 */}
+                    <span>좋아요 수 : {post.likeCount}</span> {/* 좋아요 수 */}
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>포스트가 없습니다.</p>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 };
-
 export default MyPage;

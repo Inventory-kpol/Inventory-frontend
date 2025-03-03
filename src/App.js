@@ -11,6 +11,7 @@ import PostWritePage from "./pages/Main/PostWrite";
 import PostViewPage from "./pages/Main/PostView";
 
 import MyPage from "./pages/Mypage/Mypage";
+import MyPageSetting from "./pages/Mypage/Mypage_Setting";
 
 export default function App() {
   return (
@@ -23,12 +24,13 @@ export default function App() {
       </Route>
       
       {/* 메인 페이지 및 게시글 관련 경로 */}
-      <Route path="/main" element={<MainPage />} />
-      <Route path="/post-write" element={<PostWritePage />} />
-      <Route path="/post/:postId" element={<PostViewPage />} />
+      <Route path="/main" element={<MainPage />} /> {/* 로그인하고 첫 조회 페이지.*/}
+      <Route path="/post-write" element={<PostWritePage />} />{/* 글 작성할 수 있는 페이지*/}
+      <Route path="/post/:postId" element={<PostViewPage />} />{/* 포스트 마다?*/}
 
        {/* 마이페이지 관련 경로 */}
        <Route path="/mypage" element={<MyPage />} />
+       <Route path="/mypagesetting" element={<MyPageSetting />} />
 
       {/* 잘못된 경로 처리 */}
       <Route path="*" element={<div>페이지를 찾을 수 없습니다.</div>} />
