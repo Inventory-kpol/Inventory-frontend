@@ -16,11 +16,11 @@ html, body {
   }
 
   .socialLoginContainer {
-    padding: 0.625rem 10.625rem; 
+    padding: 0.125rem 8.625rem; 
   }
   
   .socialLoginButton {
-    padding: 0.825rem 0.25rem;
+    padding: 0.625rem 0.25rem;
     border: none;
     border-radius: 50px;
     width: 50;

@@ -35,15 +35,9 @@ function Login() {
   };
 
   const handleSocialLogin = (provider) => {
-    const socialLoginUrls = {
-      kakao: `${process.env.REACT_APP_API}/api/member/login/kakao`,
-      google: `${process.env.REACT_APP_API}/api/member/login/google`,
-      naver: `${process.env.REACT_APP_API}/api/member/login/naver`,
-    };
-
-    window.location.href = socialLoginUrls[provider];
+    window.location.href = `${process.env.REACT_APP_API}/api/member/login/${provider}`;
   };
-
+  
   return (
     <div className="container">
       <ToastContainer />
@@ -106,12 +100,14 @@ function Login() {
           >
           <img src={googleLogo} alt="구글" className="socialLogo" /> 
           </button>
+          
           <button
             className="socialLoginButton naver"
             onClick={() => handleSocialLogin("naver")}
           >
           <img src={naverLogo} alt="네이버" className="socialLogo" /> 
           </button>
+
           <button
             className="socialLoginButton kakao"
             onClick={() => handleSocialLogin("kakao")}
