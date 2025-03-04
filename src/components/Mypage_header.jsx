@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import profileImage from "../assets/profile.png"; 
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // 토글 메뉴 상태
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev); // 현재 상태를 반전
+  };
+
   return (
     <header style={header_styles.header}>
       {/* 왼쪽: 제목과 사용자 이름 */}
@@ -30,7 +36,19 @@ function Header() {
           src={profileImage} // 기본 프로필 이미지 경로
           alt="프로필"
           style={header_styles.profileImage}
+          onClick = {toggleMenu}
         />
+          {/* 토글 메뉴 */}
+          {isMenuOpen && (
+            <div style={header_styles.menu}>
+              <Link to="/mypage" style={header_styles.menuItem}>
+                마이페이지
+              </Link>
+              <Link to="/mypageSetting" style={header_styles.menuItem}>
+                정보 수정
+              </Link>
+            </div>
+          )}
       </div>
     </header>
   );
@@ -88,6 +106,24 @@ const header_styles = {
     height: "36px",
     borderRadius: "50%", // 원형으로 표시
   },
+  menu: {
+    position: "absolute", // 부모 요소 기준으로 위치 설정
+    top: "50px", // 프로필 이미지 아래에 위치
+    right: 0,
+    backgroundColor: "#ffffff",
+    borderRadius: "8px",
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // 그림자 효과 추가
+    display: "flex",
+    flexDirection: "column", // 세로 정렬 (밑으로 정렬)
+  },
+  menuItem: {
+    padding: "10px",
+    textDecoration: "none",
+    color: "#000000", // 링크 색상 (검정)
+    fontSize : '14px',
+    
+   
+  }
 };
 
 export default Header;

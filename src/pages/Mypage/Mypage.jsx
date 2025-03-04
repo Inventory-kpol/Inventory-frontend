@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../../components/Mypage_header";
 import "../../styles/MyPage.css";
+
 import { useNavigate } from "react-router-dom"; // useNavigate import
 
 
 
 const MyPage = () => {
   const [viewMode, setViewMode] = useState("written"); // 현재 보기 모드, 3개의 보기모드가 있다. 
-  const [posts, setPosts] = useState([]); // 탭별 데이터
+  const [posts, setPosts] = useState([]); // 탭별 데이터 
+  const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate
 
+  /*
   // 더미 데이터 (댓글 단 포스트)
   const dummyPosts = [
     {
-      id: 1,
       userId: 1,
       nickname: "짱구야",
       title: "Velog 글 작성법",
@@ -23,7 +25,6 @@ const MyPage = () => {
       comments: [{ id: 1 }, { id: 2 }, { id: 3 }],
     },
     {
-      id: 2,
       userId: 2,
       nickname: "철수",
       title: "React 시작하기",
@@ -36,7 +37,6 @@ const MyPage = () => {
   
   const dummyCommentedPosts = [
     {
-      id: 3,
       userId: 1,
       nickname: "짱구야",
       title: "댓글 단 글 제목",
@@ -58,7 +58,36 @@ const MyPage = () => {
       setPosts(dummyCommentedPosts); // 댓글 단 포스트
     }
   }, [viewMode]);
+  */
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const token = localStorage.getItem("token"); // JWT 토큰 가져오기
 
+        if(!token)
+        {console.error("로그인 토큰이 없습니다.");
+          return ;
+        }
+        let response;
+        if(viewMode === "written"){
+          response = await axios.get("/api/members/me/boards", {
+            headers: {Authorization: `Bearer ${token}`},
+
+          });
+          setPosts(response.data);
+        }
+
+        else {
+          setPosts([]);
+        }
+      }catch(error){
+        console.error("데이터 가져오기 실패:",error);
+        setPosts([]);
+      }
+    };
+
+    fetchPosts();
+  }, [viewMode]);
 
   return (
     
@@ -91,8 +120,8 @@ const MyPage = () => {
   <div className="post-list">
             {posts.length > 0 ? (
               posts.map((post) => (
-                <div key={post.id} className="post-card">
-                  <h3>{post.title}</h3>
+                <div key={post.id} className="post-card" onClick = {() => navigate(`/post/${post.id}`)} >
+                  <h3>{post.title}</h3>    
                   <p>{post.content.substring(0, 50)}...</p> {/* 내용 일부만 표시 */}
                   <div className="post-meta">
                     <span>{new Date(post.createdAt).toLocaleDateString()}</span> {/* 작성일 */}
