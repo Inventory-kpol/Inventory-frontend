@@ -10,6 +10,8 @@ import MainPage from "./pages/Main/MainPage";
 import PostWritePage from "./pages/Main/PostWrite";
 import PostViewPage from "./pages/Main/PostView";
 
+import Board from "./pages/Board/Board"
+
 import MyPage from "./pages/Mypage/Mypage";
 
 export default function App() {
@@ -26,6 +28,9 @@ export default function App() {
       <Route path="/main" element={<MainPage />} />
       <Route path="/post-write" element={<PostWritePage />} />
       <Route path="/post/:postId" element={<PostViewPage />} />
+
+      {/* 보드 페이지 관련 경로 */}
+      <Route path="/board" element={<Board />} />
 
        {/* 마이페이지 관련 경로 */}
        <Route path="/mypage" element={<MyPage />} />

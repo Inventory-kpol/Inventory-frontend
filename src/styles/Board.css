@@ -1,0 +1,118 @@
+.board-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+  }
+  
+.blog-list-container {
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+  }
+  
+
+  .blog-list::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .blog-list::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+  
+  .blog-list::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  .blog-card {
+    display: flex;
+    align-items: center;
+    background: rgb(0, 0, 0);
+    border-color: rgb(48, 5, 176);
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px 5px rgb(48, 5, 176);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    height: 250px;
+  }
+  
+  .blog-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  
+  .blog-content {
+    flex: 1;;
+  }
+  
+  .blog-title {
+    color: #f1f1f1;
+    margin-top: -80px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .blog-description {
+    margin-top: 3%;
+    color: #555;
+  }
+ 
+  .tag-header {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .tag-sidebar {
+    width: 250px;
+    padding: 20px;
+    background: rgb(0, 0, 0);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .tag-search {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(48, 5, 176);
+    color: white;
+    background-color: #000000;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .tag-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .tag-item {
+    padding: 10px;
+    color:#f1f1f1;
+    background: #000000;
+    border-color: rgb(48, 5, 176);
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .tag-item:hover {
+    background: rgba(31, 4, 111, 0.754);
+  }
+  
+  
