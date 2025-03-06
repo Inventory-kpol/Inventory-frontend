@@ -10,6 +10,8 @@ import MainPage from "./pages/Main/MainPage";
 import PostWritePage from "./pages/Main/PostWrite";
 import PostViewPage from "./pages/Main/PostView";
 
+import Board from "./pages/Board/Board"
+
 import MyPage from "./pages/Mypage/Mypage";
 import MyPageSetting from "./pages/Mypage/Mypage_Setting";
 
@@ -27,6 +29,9 @@ export default function App() {
       <Route path="/main" element={<MainPage />} /> {/* 로그인하고 첫 조회 페이지.*/}
       <Route path="/post-write" element={<PostWritePage />} />{/* 글 작성할 수 있는 페이지*/}
       <Route path="/post/:postId" element={<PostViewPage />} />{/* 포스트 마다?*/}
+
+      {/* 보드 페이지 관련 경로 */}
+      <Route path="/board" element={<Board />} />
 
        {/* 마이페이지 관련 경로 */}
        <Route path="/mypage" element={<MyPage />} />
