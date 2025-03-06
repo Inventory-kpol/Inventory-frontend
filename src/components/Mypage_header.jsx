@@ -1,13 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import profileImage from "../assets/profile.png"; 
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 토글 메뉴 상태
+  const [nickname, setNickname] = useState(""); 
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev); // 현재 상태를 반전
   };
+
+  useEffect(() => {
+    const fetchNickname = async () => {
+      try {
+        const response = await fetch("/api/member/page/nickname"); // API 엔드포인트
+        if (!response.ok) {
+          throw new Error("Failed to fetch nickname");
+        }
+        const data = await response.json();
+        setNickname(data.nickname); // 서버에서 받은 닉네임 설정
+      } catch (error) {
+        console.error("Error fetching nickname:", error);
+      }
+    };
+
+    fetchNickname();
+  }, []); // 빈 배열로 설정해 컴포넌트 마운트 시 한 번만 실행
+
 
   return (
     <header style={header_styles.header}>
@@ -20,7 +39,7 @@ function Header() {
         </h1>
         <span style={header_styles.username}>
           <Link to="/mypage" style={header_styles.link}>
-            username
+          {nickname || "연결 안되면 이렇게 됌"} {/* 닉네임 표시 */}
           </Link>
         </span>
       </div>

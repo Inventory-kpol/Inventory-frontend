@@ -116,7 +116,7 @@ const MyPage = () => {
               댓글 단 포스트
             </button>
           </div>
-  {/* 카드 리스트 */}
+      {/* 카드 리스트 */}
   <div className="post-list">
             {posts.length > 0 ? (
               posts.map((post) => (
