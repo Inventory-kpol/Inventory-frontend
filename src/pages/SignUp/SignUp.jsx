@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "../../styles/Login.css";
 import "react-toastify/dist/ReactToastify.css";
-import axios from 'axios';
+import axios from "axios";
 
 function SignUp() {
-  const [step, setStep] = useState(1); // 현재 단계
+  const [step, setStep] = useState(1);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -15,7 +15,6 @@ function SignUp() {
   const navigate = useNavigate();
 
   const handleNextStep = () => {
-    // 첫 번째 페이지 유효성 검사
     if (!email.trim() || !password.trim() || !confirmPassword.trim()) {
       toast.error("모두 입력해주세요.");
       return;
@@ -32,81 +31,45 @@ function SignUp() {
       return;
     }
 
-    // 이메일 유효성 검사 추가
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
       toast.error("올바른 이메일 주소를 입력해주세요.");
       return;
     }
 
-    setStep(2); // 유효성 검사 통과 후, 두 번째 단계로 넘어감
-};
-
+    setStep(2);
+  };
 
   const handleSignUp = async () => {
-    // 모든 입력 데이터 유효성 검사
     if (!nickname.trim()) {
       toast.error("닉네임을 입력해주세요.");
       return;
     }
-  
+
     try {
-      // 회원가입 API 요청
-      const response = await axios.post("/api/user/signUp", {
+      const response = await axios.post(`${process.env.REACT_APP_API}/api/member/signup`, {
         email,
         password,
         username,
         nickname,
       });
-  
-      // 서버 응답 확인
+
       if (response.data.success) {
         toast.success("회원가입 완료!");
-        navigate("/login"); // 로그인 페이지로 리다이렉트
+        navigate("/login");
       } else {
         toast.error(response.data.message || "회원가입에 실패했습니다.");
       }
     } catch (error) {
       console.error("회원가입 요청 오류:", error);
-      toast.error("회원가입 중 문제가 발생했습니다. 다시 시도해주세요.");
+
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("회원가입 중 문제가 발생했습니다. 다시 시도해주세요.");
+      }
     }
   };
-
-//   const config = {
-//     method: "post",
-//     maxBodyLength: Infinity,
-//     url: "/api/user/signUp",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     data: {
-//       username: username,
-//       password: password,
-//       nickname: nickname,
-//       comment: comment,
-//     },
-//   };
-
-//   // 서버 요청
-//   api
-//     .request(config)
-//     .then((response) => {
-//       if (response.status === 200 || response.status === 201) {
-//         toast.success("회원가입 성공!");
-//         navigate("/login");
-//       }
-//     })
-//     .catch((error) => {
-//       if (
-//         error.response &&
-//         error.response.data.message === "Username already exists"
-//       ) {
-//         toast.error("이미 존재하는 아이디입니다.");
-//       } else {
-//         toast.error("서버 연결에 실패했습니다.");
-//       }
-//     });
-// };
 
   return (
     <div className="container">
