@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import profileImage from "../assets/profile.png"; 
+import profileImage from "../assets/profile.png";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 토글 메뉴 상태
@@ -55,19 +55,19 @@ function Header() {
           src={profileImage} // 기본 프로필 이미지 경로
           alt="프로필"
           style={header_styles.profileImage}
-          onClick = {toggleMenu}
+          onClick={toggleMenu}
         />
-          {/* 토글 메뉴 */}
-          {isMenuOpen && (
-            <div style={header_styles.menu}>
-              <Link to="/mypage" style={header_styles.menuItem}>
-                마이페이지
-              </Link>
-              <Link to="/mypageSetting" style={header_styles.menuItem}>
-                정보 수정
-              </Link>
-            </div>
-          )}
+        {/* 토글 메뉴 */}
+        {isMenuOpen && (
+          <div style={header_styles.menu}>
+            <Link to="/mypage" style={header_styles.menuItem}>
+              마이페이지
+            </Link>
+            <Link to="/mypageSetting" style={header_styles.menuItem}>
+              정보 수정
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );
@@ -86,7 +86,6 @@ const header_styles = {
     borderBottom: "2px solid #000000",
     backgroundColor: "#ffffff", // 배경색 추가
     zIndex: 1000, // 다른 요소 위에 표시되도록 설정
-   
   },
   leftSection: {
     display: "flex",
@@ -139,10 +138,8 @@ const header_styles = {
     padding: "10px",
     textDecoration: "none",
     color: "#000000", // 링크 색상 (검정)
-    fontSize : '14px',
-    
-   
-  }
+    fontSize: "14px",
+  },
 };
 
 export default Header;

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../../components/Mypage_header";
+import Header from "../../components/header";
 import "../../styles/MyPage_Setting.css";
 import { useNavigate } from "react-router-dom"; // useNavigate import
 
+{
+  /*회원 정보 수정 페이지입니다.*/
+}
 
 {/*회원 정보 수정 페이지입니다.*/}
 
