@@ -1,54 +1,65 @@
-/* MyPageSetting.css */
-
 .mypage-content {
   display: flex;
   flex-direction: column; /* 세로 정렬 */
-  margin-top: 60px; /* 헤더 높이만큼 여백 추가 */
+  margin-top: 100px; /* 헤더 높이만큼 여백 추가 */
   padding: 0 20px; /* 좌우 패딩 추가 */
   width: 100%; /* 화면 전체 사용 */
   box-sizing: border-box; /* 패딩 포함한 박스 크기 계산 */
 }
 
-
 .container {
-  padding: 20px;
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+}
+
+.profile-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px; /* 고정 너비 */
+  border-right: 2px solid #3b3939; /* 선 추가 */
+  padding-right: 20px;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.profile-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-info-container h2 {
+  font-size: 24px;
 }
 
 .form {
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
 .input-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  margin-bottom: 15px;
 }
 
-.input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.input-group label {
+  margin-bottom: 5px;
+}
+
+.input-group .input {
+  width: calc(100% - 20px);
 }
 
 .button {
   padding: 10px;
-  font-size: 16px;
-  background-color: #007BFF;
-  color: #fff;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
 }
 
-.message {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #007BFF;
+#edit-button {
+  margin-left: 20px;
 }
