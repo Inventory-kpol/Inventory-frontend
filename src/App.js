@@ -11,6 +11,7 @@ import PostWritePage from "./pages/Main/PostWrite";
 import PostViewPage from "./pages/Main/PostView";
 
 import Board from "./pages/Board/Board"
+import Column from "./pages/Column/Column";
 
 import MyPage from "./pages/Mypage/Mypage";
 
@@ -31,6 +32,7 @@ export default function App() {
 
       {/* 보드 페이지 관련 경로 */}
       <Route path="/board" element={<Board />} />
+      <Route path="/column" element={<Column />} />
 
        {/* 마이페이지 관련 경로 */}
        <Route path="/mypage" element={<MyPage />} />
