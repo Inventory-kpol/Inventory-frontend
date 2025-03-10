@@ -1,19 +1,31 @@
-import styled from "styled-components";
-import googleImage from "../assets/google.png"; 
+import React, { useRef } from 'react';
+import { GoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-function GoogleLogin() {
-  const GOOGLE_URI = `https://accounts.google.com/o/oauth2/v2/auth?scope=email%20openid&response_type=code&redirect_uri=${REDIRECT_URI}&client_id=${REST_API_KEY}`;
+const GoogleLogin = () => {
+  const linkRef = useRef(null);
+
+  const handleSuccess = (credentialResponse) => {
+    const token = credentialResponse.credential;
+    const redirectUrl = `https://likelionfesival.shop/oauth2/authorization/google?token=${encodeURIComponent(token)}`;
+
+    if (linkRef.current) {
+      linkRef.current.href = redirectUrl;
+      linkRef.current.click();
+    }
+  };
 
   return (
-    <a href={GOOGLE_URI }>
-      <GoggleLoginBtn src={googleImage} alt="googlelogin"></GoggleLoginBtn>
-    </a>
+    <GoogleOAuthProvider clientId="869724397420-1h9flrvdu1k3sdgclu34nfn2d4f3r5fb.apps.googleusercontent.com">
+      <GoogleLogin
+        onSuccess={handleSuccess}
+        onError={() => {
+          console.log("로그인 실패");
+        }}
+      />
+      <a ref={linkRef} style={{ display: 'none' }}></a>
+    </GoogleOAuthProvider>
   );
-}
-
-const GoggleLoginBtn = styled.img`
-  width: 50px;
-  height: 50px;
-`;
+};
 
 export default GoogleLogin;
