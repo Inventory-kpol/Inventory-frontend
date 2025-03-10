@@ -19,7 +19,6 @@
   justify-content: center;
   width: 200px; /* 고정 너비 */
   border-right: 2px solid #3b3939; /* 선 추가 */
-  padding-right: 20px;
 }
 
 .profile-image {
@@ -34,8 +33,9 @@
   justify-content: center;
 }
 
-.profile-info-container h2 {
+.profile-info-container {
   font-size: 24px;
+  align-items: left;
 }
 
 .form {
@@ -58,8 +58,10 @@
 
 .button {
   padding: 10px;
+  border-radius: 10px;
+  border: 0px;
 }
 
 #edit-button {
-  margin-left: 20px;
+  width: 100px;
 }
