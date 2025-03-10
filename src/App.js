@@ -7,8 +7,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import LoginBase from "./components/Login/LoginBase";
 
 import MainPage from "./pages/Main/MainPage";
-import PostWritePage from "./pages/Main/PostWrite";
-import PostViewPage from "./pages/Main/PostView";
+
 
 import Board from "./pages/Board/Board"
 import Column from "./pages/Column/Column";
@@ -28,11 +27,7 @@ export default function App() {
         <Route path="/login/:provider" element={<SocialRedirect />} />
       </Route>
       {/* 메인 페이지 및 게시글 관련 경로 */}
-      <Route path="/main" element={<MainPage />} />{" "}
-      {/* 로그인하고 첫 조회 페이지.*/}
-      <Route path="/post-write" element={<PostWritePage />} />
-      {/* 글 작성할 수 있는 페이지*/}
-      <Route path="/post/:postId" element={<PostViewPage />} />
+      <Route path="/main" element={<MainPage />} />{" "}  
       {/* 포스트 마다?*/}
       {/* 보드 페이지 관련 경로 */}
       <Route path="/board" element={<Board />} />
