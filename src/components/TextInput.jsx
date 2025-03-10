@@ -4,8 +4,8 @@ import styled from "styled-components";
 const StyledTextarea = styled.textarea`
   width: 720px;
   ${(props) =>
-          props.height &&
-          `
+    props.height &&
+    `
         height: ${props.height}px;
     `}
   padding: 16px;
@@ -14,10 +14,10 @@ const StyledTextarea = styled.textarea`
   flex: 1;
   margin-top: 35px;
   font-size: 16px;
-  border-color: #3e16d1;
+  border-color: rgb(0, 0, 0);
   border-radius: 4px;
-  background-color:rgba(0, 0, 0, 0.96); 
-  color: #ffffff; 
+  background-color: rgba(255, 255, 255, 0.96);
+  color: rgb(0, 0, 0);
   outline: none;
 `;
 

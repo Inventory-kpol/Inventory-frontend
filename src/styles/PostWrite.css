@@ -1,0 +1,47 @@
+.textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow: hidden; /* 추가: 스크롤바 숨기기 */
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background-color: rgb(199, 199, 199);
+  border-radius: 4px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 500px;
+}
+
+.tag .delete {
+  margin-left: 8px;
+  cursor: pointer;
+  color: red;
+}
+
+.tagSpan {
+  padding: 0px;
+  margin: 2px auto;
+}
+
+.tags-container input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 4px;
+  flex-grow: 1;
+  min-width: 120px;
+}

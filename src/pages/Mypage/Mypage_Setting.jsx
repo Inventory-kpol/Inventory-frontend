@@ -76,6 +76,7 @@ const MyPageSetting = () => {
       setMessage("정보 수정에 실패했습니다.");
     }
   };
+
   return (
     <div className="mypage-content">
       <Header />
@@ -94,7 +95,7 @@ const MyPageSetting = () => {
         <div className="profile-info-container">
           {!isEditing ? (
             <>
-              <h2>{originalData.nickname}닉네임칸</h2>
+              <h2>{originalData.nickname}닉네임..</h2>
               <button
                 id="edit-button"
                 className="button"
