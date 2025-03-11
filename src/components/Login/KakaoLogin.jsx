@@ -1,30 +1,35 @@
 import React from "react";
-import { KakaoOAuthProvider, KakaoLogin } from "react-kakao-login-sdk"; // 올바른 라이브러리 사용
 
-const KakaoOAuthLogin = () => {
-  const handleSuccess = (response) => {
-    const token = response.response.access_token; // 카카오 로그인에서 반환하는 access_token
-    const redirectUrl = `https://likelionfesival.shop/oauth2/authorization/kakao?token=${encodeURIComponent(token)}`;
+const KakaoLoginButton = () => {
+  const handleKakaoLogin = () => {
+    if (!window.Kakao) {
+      console.error("Kakao SDK 로드 실패");
+      return;
+    }
 
-    window.location.href = redirectUrl; // 로그인 후 리디렉트
+    window.Kakao.Auth.login({
+      scope: "profile_nickname, account_email",
+      success: function (response) {
+        console.log("카카오 로그인 성공:", response);
+
+        // 카카오에서 받은 액세스 토큰
+        const token = response.access_token;
+
+        // 서버로 리디렉트
+        const redirectUrl = `https://likelionfesival.shop/oauth2/authorization/kakao?token=${encodeURIComponent(token)}`;
+        window.location.href = redirectUrl;
+      },
+      fail: function (error) {
+        console.error("카카오 로그인 실패:", error);
+      },
+    });
   };
 
   return (
-    <KakaoOAuthProvider clientId="70fd8fe4103c55ed977392dcf5f03836"> 
-      <KakaoLogin
-        onSuccess={handleSuccess}
-        onFail={() => {
-          console.error("카카오 로그인 실패");
-        }}
-        onLogout={() => console.log("카카오 로그아웃")}
-        render={(props) => (
-          <button className="kakao-login-btn" onClick={props.onClick}>
-            카카오 로그인
-          </button>
-        )}
-      />
-    </KakaoOAuthProvider>
+    <button className="socialLoginButton kakao" onClick={handleKakaoLogin}>
+      <img src="/assets/kakao.png" alt="카카오 로그인" className="socialLogo" />
+    </button>
   );
 };
 
-export default KakaoOAuthLogin;
+export default KakaoLoginButton;

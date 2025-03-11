@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
-import { KakaoOAuthLogin } from "react-kakao-login-sdk";
+import KakaoLoginButton from "../../components/Login/KakaoLogin"; // 🔹 수정된 KakaoLogin import
 import googleLogo from "../../assets/google.png";
 import kakaoLogo from "../../assets/kakao.png";
 import naverLogo from "../../assets/naver.png";
@@ -127,7 +127,7 @@ function Login() {
               <img src={naverLogo} alt="네이버" className="socialLogo" /> 
             </button>
 
-            <KakaoOAuthLogin />
+            <KakaoLoginButton /> {/* 🔹 올바른 Kakao 로그인 컴포넌트 적용 */}
           </div>
         </div>
       </div>
