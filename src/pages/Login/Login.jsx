@@ -4,7 +4,8 @@ import "../../styles/Login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google"; // Google OAuth 추가
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import { KakaoOAuthLogin } from "react-kakao-login-sdk";
 import googleLogo from "../../assets/google.png";
 import kakaoLogo from "../../assets/kakao.png";
 import naverLogo from "../../assets/naver.png";
@@ -112,19 +113,21 @@ function Login() {
             <GoogleLogin
               onSuccess={handleGoogleSuccess}
               onError={() => toast.error("구글 로그인 실패")}
+              render={(props) => (
+                <button className="socialLoginButton google" onClick={props.onClick}>
+                  <img src={googleLogo} alt="구글" className="socialLogo" />
+                </button>
+              )}
             />
+            
             <button
               className="socialLoginButton naver"
               onClick={() => window.location.href = `${process.env.REACT_APP_API}/api/member/login/naver`}
             >
               <img src={naverLogo} alt="네이버" className="socialLogo" /> 
             </button>
-            <button
-              className="socialLoginButton kakao"
-              onClick={() => window.location.href = `${process.env.REACT_APP_API}/api/member/login/kakao`}
-            >
-              <img src={kakaoLogo} alt="카카오" className="socialLogo" /> 
-            </button>
+
+            <KakaoOAuthLogin />
           </div>
         </div>
       </div>
