@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import LoginBase from "./components/Login/LoginBase";
 
 import MainPage from "./pages/Main/MainPage";
+import PostWrite from "./pages/Main/PostWrite";
 
 
 import Board from "./pages/Board/Board"
@@ -28,6 +29,7 @@ export default function App() {
       </Route>
       {/* 메인 페이지 및 게시글 관련 경로 */}
       <Route path="/main" element={<MainPage />} />{" "}  
+      <Route path="/write" element={<PostWrite />} />{" "}  
       {/* 포스트 마다?*/}
       {/* 보드 페이지 관련 경로 */}
       <Route path="/board" element={<Board />} />
